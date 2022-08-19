@@ -25,6 +25,7 @@ Current version <https://cvw.cac.cornell.edu/ExpanseSing/default>
 ### Build custom images
 
 * [building](building.md)
+* [buildingsylabs](buildingsylabs.md)
 * [buildingjetstream](buildingjetstream.md)
 * [install](install.md)
 * [scratchimage](scratchimage.md)
