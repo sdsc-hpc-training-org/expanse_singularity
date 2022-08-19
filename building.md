@@ -1,6 +1,6 @@
 ### Building Singularity containers
 
-For further constumization of images or for building images from scratch
+For further costumization of images or for building images from scratch
 we need access to a GNU/Linux machine with `root` privileges.
 
 Then the Singularity workflow is composed of 3 steps:
