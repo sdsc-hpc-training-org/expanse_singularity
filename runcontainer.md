@@ -31,31 +31,6 @@ try executing the following commands:
     Singularity> python3 --version
     Python 3.10.4
 
-At this point we can create a simple SLURM script that launches a job executing a command via a Singularity container:
-
-    #!/usr/bin/env bash
-    #SBATCH --job-name=run-singularity
-    #SBATCH --account=<ADD YOUR PROJECT HERE>
-    ### Shared partition using 1/4 of a node
-    #SBATCH --partition=shared
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=32
-    #SBATCH --cpus-per-task=1
-    #SBATCH --mem=64G
-    #SBATCH --time=00:10:00
-    #SBATCH --output=log-run-singularity.o%j.%N
-
-    declare -xr SINGULARITY_MODULE='singularitypro/3.9'
-
-    module purge
-    module load "${SINGULARITY_MODULE}"
-    module list
-
-    CONTAINER_FILE='scipy-notebook_latest.sif'
-
-    time -p singularity exec --bind /expanse,/scratch $CONTAINER_FILE \
-            python3 -c "import platform; print(platform.python_version())"
-
 Singularity containers by default have access to the user home folder, in the call to `singularity exec`, we also specify `--bind /expanse,/scratch` so that the Project, Lustre scratch and local scratch filesystems are accessible from the container.
 
 At this point we can create a simple SLURM script named `run-singularity.slurm` that launches a job executing a command via our Singularity container:
