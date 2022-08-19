@@ -2,7 +2,7 @@
 
 Importing a Docker or a Singularity prebuilt container requires resources that are limited on the login node, so first we need to get a terminal on a debug computing node. Find out the available projects:
 
-    module load sdsc
+    module load sdsc # should be already loaded
     expanse-client user -r expanse
 
 copy-paste the more suitable "Project" into an environment variable:
