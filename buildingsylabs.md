@@ -1,6 +1,6 @@
 ### Building Singularity images using the Sylabs remote build service
 
-For building images not too big, i.e. less than 11 GB, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.
+For building images not too big, i.e. less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.
 
 It sends the definition file to one of the Sylabs workers which build the container and then send it back to your machine.
 
