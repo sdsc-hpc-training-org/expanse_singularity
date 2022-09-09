@@ -1,6 +1,6 @@
 ### Prerequisites
 
-The purpose of this tutorial is to enable you to use XSEDE\'s Expanse
+The purpose of this tutorial is to enable you to use ACCESS\'s Expanse
 supercomputer at [SDSC](http://www.sdsc.edu) to run your jobs using Singularity. You will
 need the following:
 
