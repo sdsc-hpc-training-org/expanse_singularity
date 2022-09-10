@@ -16,6 +16,11 @@ Copy it to the clipboard and then paste it when requested in the terminal after 
 
     singularity remote login
 
+Specify the username if it is different between Expanse and Sylabs:
+
+    SYLABS_USER='xxxxxxxxx'
+    singularity remote login --username $SYLABS_USER
+
 #### Create a custom definition file
 
 We can take one of the definition files from `naked-singularity` and customize it, for example the latest Miniconda image, which currently is:
