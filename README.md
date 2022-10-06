@@ -1,5 +1,7 @@
 ## Singularity on Expanse training
 
+Work by @zonca with important feedback from @mkandes
+
 Current version <https://cvw.cac.cornell.edu/ExpanseSing/default>
 
 * the `main` branch contains the Markdown version of the material
