@@ -1,0 +1,23 @@
+<h3 id="building-singularity-images-using-the-sylabs-remote-build-service">Building Singularity images using the Sylabs remote build service</h3>
+<p>For building images not too big, i.e. less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.</p>
+<p>It sends the definition file to one of the Sylabs workers which build the container and then send it back to your machine.</p>
+<p>This also works on the login node on Expanse, because no computation is actually done by the local machine.</p>
+<h4 id="login-to-sylabs-builder">Login to Sylabs builder</h4>
+<p>Go to <a href="https://cloud.sylabs.io/builder" class="uri">https://cloud.sylabs.io/builder</a>, create a new account, I recommend to use Github.</p>
+<p>Go to <a href="https://cloud.sylabs.io/tokens" class="uri">https://cloud.sylabs.io/tokens</a>, generate a token, for name use the machine you are running from, e.g. expanse</p>
+<p>Copy it to the clipboard and then paste it when requested in the terminal after running:</p>
+<pre><code>singularity remote login</code></pre>
+<p>Specify the username if it is different between Expanse and Sylabs:</p>
+<pre><code>SYLABS_USER=&#39;xxxxxxxxx&#39;
+singularity remote login --username $SYLABS_USER</code></pre>
+<h4 id="create-a-custom-definition-file">Create a custom definition file</h4>
+<p>We can take one of the definition files from <code>naked-singularity</code> and customize it, for example the latest Miniconda image, which currently is:</p>
+<pre><code>definition-files/miniconda/Singularity.miniconda3-py39-4.11.0-ubuntu-20.04</code></pre>
+<p>Just after <code>conda</code> is installed, <code>rm "${CONDA_INSTALLER}"</code>, we can add some custom <code>conda</code> packages, and cleanup:</p>
+<pre><code>    conda install -y -c conda-forge numpy matplotlib astropy
+    conda clean -afy</code></pre>
+<h4 id="build-the-image-remotely">Build the image remotely</h4>
+<p>We can then submit the build job with:</p>
+<pre><code>singularity build --remote /expanse/lustre/scratch/$USER/temp_project/miniconda_astropy.sif miniconda/Singularity.miniconda3-py39-4.11.0-ubuntu-20.04</code></pre>
+<p>It is quite impressive is that the log of your job shows up on Expanse even if the job is actually running remotely on Sylabs machines.</p>
+<p>After the process is completed you should have your container in <code>/expanse/lustre/scratch/$USER/temp_project/miniconda_astropy.sif</code>.</p>
