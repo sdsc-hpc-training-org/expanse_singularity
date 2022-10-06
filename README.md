@@ -1,6 +1,6 @@
 ## Singularity on Expanse training
 
-Work by @zonca with important feedback from @mkandes
+Work by Andrea Zonca with important feedback from Marty Kandes on a previous version developed by Jeff Sale, Trevor Cooper and Manu Shantharam
 
 Current version <https://cvw.cac.cornell.edu/ExpanseSing/default>
 
