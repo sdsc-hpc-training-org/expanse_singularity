@@ -10,6 +10,7 @@ our definition file. Here's an example Anaconda definition file:
 The following command creates an ubuntu-anaconda.sif image from the
 definition file `Singularity.anaconda3-py39-2021.11-ubuntu-20.04`:
 
+    mkdir naked-singularity
     cd naked-singularity
     sudo singularity build ubuntu-anaconda.sif definition-files/anaconda/Singularity.anaconda3-py39-2021.11-ubuntu-20.04
 

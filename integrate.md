@@ -36,7 +36,7 @@ job script. The script is a modification of an example found on Expanse,
 The above script requests 1 node and 128 tasks per node with a wall time
 of 30 minutes. Notice that the Singularity module is loaded.
 
-You may need to modify the line specifying with allocation to be used
+You may need to modify the line specifying which allocation to be used
 for this job (\--account=use300). When you are ready to submit the job
 to the Expanse queue, issue the following command (make sure you copy
 the script as well the python code into a directory that you can write

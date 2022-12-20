@@ -1,10 +1,10 @@
 ### Run a GPU container on Expanse
 
 One of the most powerful features of Singularity is that it supports loading the GPU drivers
-directly from the host, so that the container doesn't need to have the required GPU drivers built it.
-This is accomplished by the `--nv` flag passed to `singularity exec`.
+directly from the host, so the container doesn't need to have the required GPU drivers built into it.
+This is accomplished by passing the `--nv` flag to `singularity exec`.
 
-Let's now run an example PyTorch training on GPU on Expanse, first make sure you have
+Let's now run an example PyTorch training on a GPU on Expanse. First make sure you have
 [downloaded the PyTorch container](./sdscimages.html).
 
 Then we can download an example MNIST training:
@@ -14,9 +14,9 @@ Then we can download an example MNIST training:
     cd mnist
     wget https://github.com/pytorch/examples/raw/2bf23f105237e03ee2501f29670fb6a9ca915096/mnist/main.py
 
-We need to be in a subfolder because the script will write some input data to `../data` so we need that to be writable.
+We do the above in a new subfolder because the Python script will write some input data to `../data`, so we need that path to be writable.
 
-Now we can create a SLURM job named `run-pytorch-gpu.slurm`:
+Now we can create a Slurm job named `run-pytorch-gpu.slurm`:
 
 ```bash
 #!/usr/bin/env bash
@@ -42,7 +42,7 @@ CONTAINER_FILE='../naked-singularity_pytorch-1.10.2-ubuntu-20.04-cuda-11.2-mlnx-
 time -p singularity exec --bind /expanse,/scratch --nv $CONTAINER_FILE python3 main.py
 ```
 
-The only differences are the `--nv` argument to `singularity exec`, the queue and the `gpus` flag in the SLURM job.
+The only differences are the `--nv` argument to `singularity exec`, the queue and the `gpus` flag in the Slurm job.
 
 Finally we can submit it with:
 

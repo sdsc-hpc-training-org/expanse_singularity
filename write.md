@@ -1,7 +1,6 @@
 ### Write into a Singularity Container
 
-Try writing into the container (as root, you might be prompted for your
-password):
+Try writing into the sandbox container you [created earlier](scratchimage.md). You will do this by logging in as root, so you might be prompted for your password:
 
     sudo singularity shell --writable ubuntu
 

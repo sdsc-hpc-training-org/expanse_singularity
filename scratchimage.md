@@ -1,7 +1,8 @@
 ### Build Images from Scratch
 
 Singularity supports an image format that is writable called the sandbox
-format (a directory), ideal for the development process.
+format (a directory). This is ideal for the development process on the
+laptop or workstation where you [installed Singularity](install.md)
 
 The following command creates a directory called ubuntu/ with an entire
 Ubuntu OS in the current working directory.

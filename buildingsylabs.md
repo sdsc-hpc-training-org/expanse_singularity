@@ -1,22 +1,22 @@
 ### Building Singularity images using the Sylabs remote build service
 
-For building images not too big, i.e. less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.
+For building images that are not too big, i.e., less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.
 
-It sends the definition file to one of the Sylabs workers which build the container and then send it back to your machine.
+This service sends your Singularity definition file to one of the Sylabs workers which builds the container and then sends it back to your machine.
 
-This also works on the login node on Expanse, because no computation is actually done by the local machine.
+This procedure also works on the login node on Expanse, because no computation is actually done by the local machine.
 
 #### Login to Sylabs builder
 
-Go to <https://cloud.sylabs.io/builder>, create a new account, I recommend to use Github.
+Go to <https://cloud.sylabs.io/builder> and create a new account. We recommend using GitHub.
 
-Go to <https://cloud.sylabs.io/tokens>, generate a token, for name use the machine you are running from, e.g. expanse
+Go to <https://cloud.sylabs.io/tokens>, generate a token, name it after the machine you are running from, e.g. expanse.
 
 Copy it to the clipboard and then paste it when requested in the terminal after running:
 
     singularity remote login
 
-Specify the username if it is different between Expanse and Sylabs:
+First specify the username if it is different between Expanse and Sylabs:
 
     SYLABS_USER='xxxxxxxxx'
     singularity remote login --username $SYLABS_USER
