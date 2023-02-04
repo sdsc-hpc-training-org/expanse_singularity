@@ -1,5 +1,5 @@
 <h3 id="write-into-a-singularity-container">Write into a Singularity Container</h3>
-<p>Try writing into the container (as root, you might be prompted for your password):</p>
+<p>Try writing into the sandbox container you <a href="scratchimage.md">created earlier</a>. You will do this by logging in as root, so you might be prompted for your password:</p>
 <pre><code>sudo singularity shell --writable ubuntu</code></pre>
 <p>Create a “test” file in the <code>root</code> directory and view its contents</p>
 <pre><code>Singularity&gt; echo &quot;my test file&quot; &gt; /test

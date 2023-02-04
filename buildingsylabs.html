@@ -1,13 +1,13 @@
 <h3 id="building-singularity-images-using-the-sylabs-remote-build-service">Building Singularity images using the Sylabs remote build service</h3>
-<p>For building images not too big, i.e. less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.</p>
-<p>It sends the definition file to one of the Sylabs workers which build the container and then send it back to your machine.</p>
-<p>This also works on the login node on Expanse, because no computation is actually done by the local machine.</p>
+<p>For building images that are not too big, i.e., less than 11 GB and with a build-time less than 1 hour, the company behind Singularity, Sylabs, offers a free cloud based service accessible from the command line.</p>
+<p>This service sends your Singularity definition file to one of the Sylabs workers which builds the container and then sends it back to your machine.</p>
+<p>This procedure also works on the login node on Expanse, because no computation is actually done by the local machine.</p>
 <h4 id="login-to-sylabs-builder">Login to Sylabs builder</h4>
-<p>Go to <a href="https://cloud.sylabs.io/builder" class="uri">https://cloud.sylabs.io/builder</a>, create a new account, I recommend to use Github.</p>
-<p>Go to <a href="https://cloud.sylabs.io/tokens" class="uri">https://cloud.sylabs.io/tokens</a>, generate a token, for name use the machine you are running from, e.g. expanse</p>
+<p>Go to <a href="https://cloud.sylabs.io/builder" class="uri">https://cloud.sylabs.io/builder</a> and create a new account. We recommend using GitHub.</p>
+<p>Go to <a href="https://cloud.sylabs.io/tokens" class="uri">https://cloud.sylabs.io/tokens</a>, generate a token, name it after the machine you are running from, e.g. expanse.</p>
 <p>Copy it to the clipboard and then paste it when requested in the terminal after running:</p>
 <pre><code>singularity remote login</code></pre>
-<p>Specify the username if it is different between Expanse and Sylabs:</p>
+<p>First specify the username if it is different between Expanse and Sylabs:</p>
 <pre><code>SYLABS_USER=&#39;xxxxxxxxx&#39;
 singularity remote login --username $SYLABS_USER</code></pre>
 <h4 id="create-a-custom-definition-file">Create a custom definition file</h4>

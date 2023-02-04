@@ -2,13 +2,14 @@
 <p>Importing a Docker or a Singularity prebuilt container requires resources that are limited on the login node, so first we need to get a terminal on a debug computing node. Find out the available projects:</p>
 <pre><code>module load sdsc # should be already loaded
 expanse-client user -r expanse</code></pre>
-<p>copy-paste the more suitable “Project” into an environment variable:</p>
+<p>Copy-paste the more suitable “Project” into an environment variable:</p>
 <pre><code>export PROJECT=xxx123</code></pre>
 <p>Now we can request 30 minutes in the debug partition:</p>
 <pre><code>srun --partition=debug --pty --account=$PROJECT --nodes=1 --ntasks-per-node=4 \
 --mem=8G -t 00:30:00 --wait=0 --export=ALL /bin/bash</code></pre>
-<p>For example we can import one of the <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html">Docker container by the Jupyter Project</a> that can be used to run JupyterLab on Expanse via the <a href="https://github.com/mkandes/galyleo">Galyleo script</a>:</p>
+<p>For example we can import one of the <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html">Docker containers by the Jupyter Project</a> that can be used to run JupyterLab on Expanse via the <a href="https://github.com/mkandes/galyleo">Galyleo script</a>:</p>
 <pre><code>cd /expanse/lustre/scratch/$USER/temp_project
+module load singularitypro
 singularity pull docker://jupyter/scipy-notebook:latest</code></pre>
 <p>This will create the Singularity container file:</p>
 <pre><code>$ du -sh scipy-notebook_latest.sif

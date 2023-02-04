@@ -1,13 +1,13 @@
 <h3 id="run-a-gpu-container-on-expanse">Run a GPU container on Expanse</h3>
-<p>One of the most powerful features of Singularity is that it supports loading the GPU drivers directly from the host, so that the container doesn’t need to have the required GPU drivers built it. This is accomplished by the <code>--nv</code> flag passed to <code>singularity exec</code>.</p>
-<p>Let’s now run an example PyTorch training on GPU on Expanse, first make sure you have <a href="./sdscimages.html">downloaded the PyTorch container</a>.</p>
+<p>One of the most powerful features of Singularity is that it supports loading the GPU drivers directly from the host, so the container doesn’t need to have the required GPU drivers built into it. This is accomplished by passing the <code>--nv</code> flag to <code>singularity exec</code>.</p>
+<p>Let’s now run an example PyTorch training on a GPU on Expanse. First make sure you have <a href="./sdscimages.html">downloaded the PyTorch container</a>.</p>
 <p>Then we can download an example MNIST training:</p>
 <pre><code>cd /expanse/lustre/scratch/$USER/temp_project
 mkdir mnist
 cd mnist
 wget https://github.com/pytorch/examples/raw/2bf23f105237e03ee2501f29670fb6a9ca915096/mnist/main.py</code></pre>
-<p>We need to be in a subfolder because the script will write some input data to <code>../data</code> so we need that to be writable.</p>
-<p>Now we can create a SLURM job named <code>run-pytorch-gpu.slurm</code>:</p>
+<p>We do the above in a new subfolder because the Python script will write some input data to <code>../data</code>, so we need that path to be writable.</p>
+<p>Now we can create a Slurm job named <code>run-pytorch-gpu.slurm</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#!/usr/bin/env bash</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#SBATCH --job-name=pytorch-gpu</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#SBATCH --account=&lt;ADD YOUR PROJECT HERE&gt;</span></span>
@@ -29,6 +29,6 @@ wget https://github.com/pytorch/examples/raw/2bf23f105237e03ee2501f29670fb6a9ca9
 <span id="cb2-19"><a href="#cb2-19"></a><span class="va">CONTAINER_FILE=</span><span class="st">&#39;../naked-singularity_pytorch-1.10.2-ubuntu-20.04-cuda-11.2-mlnx-ofed-4.9-4.1.7.0-openmpi-4.1.3.sif&#39;</span></span>
 <span id="cb2-20"><a href="#cb2-20"></a></span>
 <span id="cb2-21"><a href="#cb2-21"></a><span class="bu">time</span> -p singularity exec --bind /expanse,/scratch --nv <span class="va">$CONTAINER_FILE</span> python3 main.py</span></code></pre></div>
-<p>The only differences are the <code>--nv</code> argument to <code>singularity exec</code>, the queue and the <code>gpus</code> flag in the SLURM job.</p>
+<p>The only differences are the <code>--nv</code> argument to <code>singularity exec</code>, the queue and the <code>gpus</code> flag in the Slurm job.</p>
 <p>Finally we can submit it with:</p>
 <pre><code>sbatch run-pytorch-gpu.slurm</code></pre>

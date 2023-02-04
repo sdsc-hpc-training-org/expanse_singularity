@@ -1,10 +1,10 @@
-<h3 id="building-singularity-images-on-jetstream-2">Building Singularity images on Jetstream 2</h3>
-<p>If you already have access to the Jetstream 2 Cloud service, it could be a good option to build Singularity containers there instead of a laptop, consider in particular that complicated containers like PyTorch or Tensorflow take hours to build.</p>
-<p>Login to <a href="https://jetstream2.exosphere.app" class="uri">https://jetstream2.exosphere.app</a> with your XSEDE credentials, under the Create button choose “SSH Public key”, copy the key you will be using to SSH into the Virtual Machine.</p>
+<h3 id="building-singularity-images-on-jetstream2">Building Singularity images on Jetstream2</h3>
+<p>If you have access to the Jetstream2 cloud service and are already familiar with how to use it, it could be a good option to build Singularity containers there instead of on a laptop. Consider in particular that complicated containers like PyTorch or Tensorflow take hours to build.</p>
+<p>Login to <a href="https://jetstream2.exosphere.app" class="uri">https://jetstream2.exosphere.app</a> with your ACCESS credentials. Under the Create button choose “SSH Public key” and paste the key you will be using to SSH into the Virtual Machine.</p>
 <p>Under the Create button choose “Instance”, choose Ubuntu 22.04 as OS.</p>
-<p>Choose at least a <code>m3.quad</code> which has 4 vCPUs and 15 GB of RAM</p>
-<p>Open the advanced options and select the key you just uploaded</p>
+<p>Choose at least a <code>m3.quad</code> which has 4 vCPUs and 15 GB of RAM.</p>
+<p>Open the advanced options and select the key you just uploaded.</p>
 <p>Wait for the VM to build, access the details to find out the public IP, then SSH with:</p>
 <pre><code>ssh ubuntu@xxx.xxx.xxx.xxx</code></pre>
-<p>In order to avoid warnings during the Singularity build process, better restart the Virtual Machine:</p>
+<p>In order to avoid warnings during the Singularity build process, it is better to restart the Virtual Machine:</p>
 <pre><code>sudo reboot</code></pre>
