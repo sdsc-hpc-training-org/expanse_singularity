@@ -5,7 +5,7 @@ Importing a Docker or a Singularity prebuilt container requires resources that a
     module load sdsc # should be already loaded
     expanse-client user -r expanse
 
-copy-paste the more suitable "Project" into an environment variable:
+Copy-paste the more suitable "Project" into an environment variable:
 
     export PROJECT=xxx123
 
@@ -14,9 +14,10 @@ Now we can request 30 minutes in the debug partition:
     srun --partition=debug --pty --account=$PROJECT --nodes=1 --ntasks-per-node=4 \
     --mem=8G -t 00:30:00 --wait=0 --export=ALL /bin/bash
 
-For example we can import one of the [Docker container by the Jupyter Project](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html) that can be used to run JupyterLab on Expanse via the [Galyleo script](https://github.com/mkandes/galyleo):
+For example we can import one of the [Docker containers by the Jupyter Project](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html) that can be used to run JupyterLab on Expanse via the [Galyleo script](https://github.com/mkandes/galyleo):
 
     cd /expanse/lustre/scratch/$USER/temp_project
+    module load singularitypro
     singularity pull docker://jupyter/scipy-notebook:latest
 
 This will create the Singularity container file:

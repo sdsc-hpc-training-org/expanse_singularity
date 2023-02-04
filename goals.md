@@ -2,6 +2,6 @@
 
 In this tutorial you will learn:
 
-1.  how to pull prebuilt Docker or Singularity to Expanse
-1.  how to execute Singularity containers interatively and via SLURM jobs
+1.  how to pull a prebuilt Docker or Singularity container to Expanse
+1.  how to execute Singularity containers interactively and via Slurm jobs
 1.  how to build a container outside of Expanse
